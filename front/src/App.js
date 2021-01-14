@@ -1,23 +1,39 @@
-
+import React, { useState } from 'react'
 import './App.css';
+import fileService from './services/file'
 
 function App() {
+
+  const [fileText, setFileText] = useState("")
+  const [data, setData] = useState("")
+
+  const processFile = async () => {
+    const inputFile = document.getElementById("input").files[0]
+    if (inputFile) {
+      const content = await inputFile.text()
+      setFileText(content)
+      const response = await fileService(content)
+      console.log(response.data)
+      setData(response.data)
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          MODBUS Reader
+        </h1>
       </header>
-    </div>
+      <main>
+        <div>
+          <input type="file" id="input" multiple />
+          <button onClick={processFile}>Send and process file</button>
+          <div>{fileText}</div>
+          <div>{data}</div>
+        </div>
+      </main>
+    </div>  
   );
 }
 
