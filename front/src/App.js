@@ -9,13 +9,11 @@ function App() {
 
   const processFile = async () => {
     const inputFile = document.getElementById("input").files[0]
-    if (inputFile) {
-      const content = await inputFile.text()
-      setFileText(content)
-      const response = await fileService(content)
-      console.log(response.data)
-      setData(response.data)
-    }
+    const content = await inputFile.text()
+    setFileText(content)
+    const response = await fileService(content)
+    console.log(response.data)
+    setData(response.data)
   }
 
   return (
@@ -29,7 +27,6 @@ function App() {
         <div>
           <input type="file" id="input" multiple />
           <button onClick={processFile}>Send and process file</button>
-          <div>{fileText}</div>
           <div>{data}</div>
         </div>
       </main>

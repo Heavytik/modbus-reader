@@ -1,9 +1,8 @@
 import axios from 'axios'
-const apiUrl = 'http://localhost:8080/'
+const apiUrl = 'http://localhost:8080/api'
 
 const fileService = (fileText) => {
-    const config = {}
-    return axios.get(apiUrl, config)
+    return axios.post(apiUrl, {text:fileText})
 }
 
 export default fileService;

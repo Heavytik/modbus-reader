@@ -1,9 +1,9 @@
 package com.gambit.modbusdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,8 +14,10 @@ public class HelloController {
     private ConverterService converter;
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @RequestMapping("/")
-    public List<String> index() {
-        return converter.allStrings();
+    @PostMapping(
+            value = "/api",
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String postAction(@RequestBody FileText fileText) {
+        return "You did sent: " + fileText.getText();
     }
 }
