@@ -1,5 +1,7 @@
 package com.gambit.modbusdemo;
 
+import org.springframework.stereotype.Component;
+
 public class FileText {
     private String text;
 
