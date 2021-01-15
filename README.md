@@ -7,7 +7,7 @@ Demo has done with Java Spring backend and React frontend.
 
 There is live demo. Front end is debloyed in own repository, on Netlify. Backend is on Heroku.
 
-[https://amazing-elion-9a43e9.netlify.app/]
+https://amazing-elion-9a43e9.netlify.app/
 
 Time requirements are tight. And please consider, that I haven't never programmed before with Java.
 
