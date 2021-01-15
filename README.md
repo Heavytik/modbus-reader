@@ -3,6 +3,8 @@ Demo project
 
 This demo is not ready. It fullfilles only requirements for Long type numbers and partially Floats. Code quality is easy to improve. I really would like to add some documentation, but its time is not yet, when code is still evolving fast (Its time is when there is a little bit more stability).
 
+THERE IS NO ANY ERROR MANAGEMENT, so app is not production ready att all.
+
 Demo has done with Java Spring backend and React frontend.
 
 There is live demo. Front end is debloyed in own repository, on Netlify. Backend is on Heroku.
