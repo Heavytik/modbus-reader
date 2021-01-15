@@ -1,9 +1,13 @@
 # modbus-reader
 Demo project
 
-This demo is not ready. It fullfilles only requirements for Long type numbers and partially Floats. Code quality is easy to improve.
+This demo is not ready. It fullfilles only requirements for Long type numbers and partially Floats. Code quality is easy to improve. I really would like to add some documentation, but its time is not yet, when code is still evolving fast (Its time is when there is a little bit more stability).
 
 Demo has done with Java Spring backend and React frontend.
+
+There is live demo. Front end is debloyed in own repository, on Netlify. Backend is on Heroku.
+
+[https://amazing-elion-9a43e9.netlify.app/]
 
 Time requirements are tight. And please consider, that I haven't never programmed before with Java.
 
