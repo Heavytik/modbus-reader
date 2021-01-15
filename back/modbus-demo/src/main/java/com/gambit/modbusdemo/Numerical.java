@@ -12,15 +12,24 @@ public class Numerical {
     }
 
     public String parseNumberToString() {
-        return "";
+
+        String str = switch (this.numberType) {
+            case LONG -> Long.toString(convertLong());
+            case FLOAT -> Float.toString(convertFloat());
+            case INTEGER_LOW -> "";
+        };
+
+        return str;
     }
 
-    private Long convertLong(int x, int y) {
+    private Long convertLong() {
+        int x = initialNumbers.get(0);
+        int y = initialNumbers.get(1);
         return Long.parseLong(convertToBinString(x, y),2);
     }
 
-    private Float convertFloat(int x, int y) {
-        return Float.intBitsToFloat(convertLong(x, y).intValue());
+    Float convertFloat() {
+        return Float.intBitsToFloat(convertLong().intValue());
     }
 
     private String convertToBinString(int lowBit, int highBit) {

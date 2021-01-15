@@ -4,17 +4,31 @@ import fileService from './services/file'
 
 function App() {
 
-  const [fileText, setFileText] = useState("")
-  const [data, setData] = useState("")
+  const [data, setData] = useState([])
 
   const processFile = async () => {
     const inputFile = document.getElementById("input").files[0]
     const content = await inputFile.text()
-    setFileText(content)
     const response = await fileService(content)
-    console.log(response.data)
-    setData(response.data)
+    
+    setData(parseResponse(response.data))
   }
+
+  const parseResponse = (res) => {
+    const trimmed = res.trim()
+    const noBraces = trimmed.substring(1, trimmed.length - 1)
+    const elemArray = noBraces.split(",")
+    return elemArray.map(e => {
+      const values = e.split(":")
+      return {
+        description: values[0].trim(),
+        value: values[1].trim(),
+        unit: values[2].trim()
+      }
+    })
+  }
+
+  const dataList = data.map(d => <tr key={d.description}><td>{d.description}</td><td>{d.value}</td><td>{d.unit}</td></tr>)
 
   return (
     <div className="App">
@@ -24,10 +38,25 @@ function App() {
         </h1>
       </header>
       <main>
-        <div>
-          <input type="file" id="input" multiple />
-          <button onClick={processFile}>Send and process file</button>
-          <div>{data}</div>
+        <div className="container">
+          <div>
+            <input type="file" id="input" multiple />
+            <button onClick={processFile}>Send and process file</button>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Value</th>
+                  <th>Unit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dataList}
+              </tbody>
+            </table>
+          </div>
         </div>
       </main>
     </div>  
