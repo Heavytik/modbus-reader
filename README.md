@@ -16,3 +16,11 @@ Time requirements are tight. And please consider, that I haven't never programme
 After that project, I think that it would be much more efficient to program with Python. There would be better support for "binary strings". And working with dynamic language would be easier when data is "unsupported number type". I researched different language options, but ended to Java, because I want to learn it more. Forehand I didnt found any significant advantage between languages (maybe a little bit in Python, because `int.from_bytes(bytes, byteorder, *, signed=False)` function)
 
 After all, I think project would be doable with that my base.
+
+UPDATE:
+
+After coding, I found formulas (not sure, if working properly):
+1. Integer.toBinaryString(65536 - x) changes negative number x "right" to binary.
+2. 65536 / 2 - Integer.parseInt(x, 2) changes negative binary string "ritght" to decimal.
+
+Those equations simplify modifications a lot.
